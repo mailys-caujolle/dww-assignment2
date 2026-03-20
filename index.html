@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston Theater - Final Assignment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="logo">Boston Theater</div>
+            <div class="search-box"><i class="fa fa-search"></i> Rechercher</div>
+        </div>
+        <div class="nav-secondary">
+            <span>Tickets & Events | Your Visit | About Us | Cart <i class="fa fa-shopping-basket"></i></span>
+        </div>
+    </header>
+
+    <main class="shows-grid">
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg">
+            <div class="show-info">
+                <h3>The Play That Goes Wrong</h3>
+                <p>Nov 26, 2021 - Jan 30, 2022 [cite: 7]</p>
+                <button class="btn-more" onclick="openMoreInfo('play-wrong')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('play-wrong')">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg">
+            <div class="show-info">
+                <h3>Wicked</h3>
+                <p>Mar 14, 2022 - May 31, 2022 [cite: 23]</p>
+                <button class="btn-more" onclick="openMoreInfo('wicked')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('wicked')">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg">
+            <div class="show-info">
+                <h3>Dear Evan Hansen</h3>
+                <p>May 19, 2022 - Jul 23, 2022 [cite: 32]</p>
+                <button class="btn-more" onclick="openMoreInfo('evan')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('evan')">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg">
+            <div class="show-info">
+                <h3>Pride and Prejudice* (sort of)</h3>
+                <p>Nov 28, 2021 - Feb 14, 2022 [cite: 14]</p>
+                <button class="btn-more" onclick="openMoreInfo('pride')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('pride')">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg">
+            <div class="show-info">
+                <h3>The Mirror and the Light</h3>
+                <p>Dec 19, 2021 - Jan 23, 2022 [cite: 44]</p>
+                <button class="btn-more" onclick="openMoreInfo('mirror')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('mirror')">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="show-card">
+            <img src="https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg">
+            <div class="show-info">
+                <h3>Oleanna</h3>
+                <p>Aug 27, 2021 - Oct 23, 2021 [cite: 51]</p>
+                <button class="btn-more" onclick="openMoreInfo('oleanna')">More Info</button>
+                <button class="btn-buy" onclick="openBuyTickets('oleanna')">Buy Tickets</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-info" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-info')">&times;</span>
+            <div class="info-card-left"><img id="info-img" src=""></div>
+            <div class="info-card-right">
+                <h4 id="info-title"></h4>
+                <div class="detail-item"><span id="info-cat"></span></div>
+                <div class="detail-item" id="info-desc"></div>
+                <div class="detail-item"><strong id="info-venue"></strong></div>
+                <div class="detail-item" id="info-dates"></div>
+                <div class="detail-item" id="info-price" style="color:white; font-weight:bold;"></div>
+                <button class="btn-buy" id="btn-buy-from-info" style="width:100%; margin-top:10px;">Buy Tickets</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-buy" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-buy')">&times;</span>
+            <div class="info-card-left">
+                <img id="buy-img" src="">
+                <button class="btn-buy" style="width:100%; margin-top:10px">Confirmer</button>
+            </div>
+            <div class="cal-box">
+                <strong>Sélectionnez une date</strong>
+                <div class="days-grid" id="calendar-days"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const shows = {
+            'play-wrong': { title: "The Play That Goes Wrong", cat: "Category: Comedies [cite: 4]", desc: "Putting Mischief Theatre firmly on the map, The Play That Goes Wrong continues to leave audiences in fits of giggles at the Duchess Theatre. [cite: 5]", venue: "Duchess Theatre [cite: 6]", dates: "From Fri Nov 26 2021 to Sun Jan 30 2022 [cite: 7]", price: "$59.00 (144 tickets remaining) [cite: 8]", img: "https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" },
+            'wicked': { title: "Wicked", cat: "Category: Musicals [cite: 20]", desc: "Since opening on Broadway in 2003, Wicked has taken the world of musical theatre by storm. [cite: 21]", venue: "Apollo Victoria Theatre [cite: 22]", dates: "From Mon Mar 14 2022 to Tue May 31 2022 [cite: 23]", price: "$29.00 (249 tickets remaining) [cite: 24]", img: "https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg" },
+            'evan': { title: "Dear Evan Hansen", cat: "Category: Musicals [cite: 29]", desc: "The smash-hit Broadway musical Dear Evan Hansen, from the writers of La La Land and The Greatest Showman, transferred to London's Noel Coward Theatre in November 2019. [cite: 30]", venue: "Noel Coward Theatre [cite: 31]", dates: "From Thu May 19 2022 to Sat Jul 23 2022 [cite: 32]", price: "$49.00 (62 tickets remaining) [cite: 33]", img: "https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg" },
+            'pride': { title: "Pride and Prejudice* (sort of)", cat: "Category: Comedies [cite: 11]", desc: "It's a truth universally acknowledged that a Jane Austen novel must be adapted - and this time, 30 years of pop hits and an irreverent all-female cast bring a bold new Pride and Prejudice to the Criterion Theatre! [cite: 12]", venue: "Criterion Theatre [cite: 13]", dates: "From Sun Nov 28 2021 to Mon Feb 14 2022 [cite: 14]", price: "$59.00 (291 tickets remaining) [cite: 15]", img: "https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg" },
+            'mirror': { title: "The Mirror and the Light", cat: "Category: Plays [cite: 41]", desc: "Hilary Mantel's The Mirror and the Light at the Gielgud Theatre. Show of the Week - Special prices available. [cite: 42]", venue: "Gielgud Theatre [cite: 43]", dates: "From Sun Dec 19 2021 to Sun Jan 23 2022 [cite: 44]", price: "$59.00 (198 tickets remaining) [cite: 45]", img: "https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg" },
+            'oleanna': { title: "Oleanna", cat: "Category: Plays [cite: 48]", desc: "David Mamet's Oleanna is in London in 2021. Oleanna is at the Arts Theatre from July 2021. Oleanna tickets are available on London Theatre now. [cite: 49]", venue: "Arts Theatre [cite: 50]", dates: "From Fri Aug 27 2021 to Sat Oct 23 2021 [cite: 51]", price: "$49.00 (329 tickets remaining) [cite: 52]", img: "https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg" }
+        };
+
+        function openMoreInfo(id) {
+            const s = shows[id];
+            document.getElementById('info-title').innerText = s.title;
+            document.getElementById('info-cat').innerText = s.cat;
+            document.getElementById('info-desc').innerText = s.desc;
+            document.getElementById('info-venue').innerText = s.venue;
+            document.getElementById('info-dates').innerText = s.dates;
+            document.getElementById('info-price').innerText = s.price;
+            document.getElementById('info-img').src = s.img;
+            document.getElementById('modal-info').style.display = 'flex';
+            document.getElementById('btn-buy-from-info').onclick = () => openBuyTickets(id);
+        }
+
+        function openBuyTickets(id) {
+            document.getElementById('buy-img').src = shows[id].img;
+            renderCalendar();
+            document.getElementById('modal-buy').style.display = 'flex';
+        }
+
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-days');
+            grid.innerHTML = "<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>";
+            for (let i = 1; i <= 31; i++) {
+                let d = document.createElement('span'); d.className = 'day'; d.innerText = i;
+                d.onclick = function() { document.querySelectorAll('.day').forEach(el => el.classList.remove('active')); this.classList.add('active'); };
+                grid.appendChild(d);
+            }
+        }
+    </script>
+</body>
+</html>
