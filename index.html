@@ -3,39 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Boston Theater</title>
-    /* Chargement des polices, des icônes et lien avec le code CSS */
+    <!-- Chargement des polices, des icônes et lien avec le code CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    /* Partie "bannière" de la page principale" */
+    <!-- Partie "bannière" de la page principale" -->
     <header>
+        <!-- Première ligne de la bannière -->
         <div class="header-top">
             <div class="logo">Boston Theater</div>
             <div class="search-box"><i class="fa fa-search"></i> Rechercher</div>
         </div>
+        <!-- Deuxième ligne de la bannière -->
         <div class="nav-secondary">
             <span>Tickets & Events | Your Visit | About Us | Cart <i class="fa fa-shopping-basket"></i></span>
         </div>
     </header>
 
+    <!-- Affichage des cartes des pièces de théâtre dans la zone délimitée shows-grid -->
     <main class="shows-grid">
         <div class="show-card">
+            <!-- Source de l'image -->
             <img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg">
             <div class="show-info">
+                <!-- Titre de l'image -->
                 <h3>The Play That Goes Wrong</h3>
-                <p>Nov 26, 2021 - Jan 30, 2022 [cite: 7]</p>
+                <!-- paragraphe en dessous du titre -->
+                <p>Nov 26, 2021 - Jan 30, 2022</p>
+                <!-- Action quand on clique sur le bouton More Info -->
                 <button class="btn-more" onclick="openMoreInfo('play-wrong')">More Info</button>
+                <!-- Action quand on clique sur le bouton Buy Tickets -->
                 <button class="btn-buy" onclick="openBuyTickets('play-wrong')">Buy Tickets</button>
             </div>
         </div>
+         <!-- Pareil pour toutes les autres cartes -->
         <div class="show-card">
             <img src="https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg">
             <div class="show-info">
                 <h3>Wicked</h3>
-                <p>Mar 14, 2022 - May 31, 2022 [cite: 23]</p>
+                <p>Mar 14, 2022 - May 31, 2022</p>
                 <button class="btn-more" onclick="openMoreInfo('wicked')">More Info</button>
                 <button class="btn-buy" onclick="openBuyTickets('wicked')">Buy Tickets</button>
             </div>
@@ -44,7 +53,7 @@
             <img src="https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg">
             <div class="show-info">
                 <h3>Dear Evan Hansen</h3>
-                <p>May 19, 2022 - Jul 23, 2022 [cite: 32]</p>
+                <p>May 19, 2022 - Jul 23, 2022</p>
                 <button class="btn-more" onclick="openMoreInfo('evan')">More Info</button>
                 <button class="btn-buy" onclick="openBuyTickets('evan')">Buy Tickets</button>
             </div>
@@ -53,7 +62,7 @@
             <img src="https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg">
             <div class="show-info">
                 <h3>Pride and Prejudice* (sort of)</h3>
-                <p>Nov 28, 2021 - Feb 14, 2022 [cite: 14]</p>
+                <p>Nov 28, 2021 - Feb 14, 2022</p>
                 <button class="btn-more" onclick="openMoreInfo('pride')">More Info</button>
                 <button class="btn-buy" onclick="openBuyTickets('pride')">Buy Tickets</button>
             </div>
@@ -62,7 +71,7 @@
             <img src="https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg">
             <div class="show-info">
                 <h3>The Mirror and the Light</h3>
-                <p>Dec 19, 2021 - Jan 23, 2022 [cite: 44]</p>
+                <p>Dec 19, 2021 - Jan 23, 2022</p>
                 <button class="btn-more" onclick="openMoreInfo('mirror')">More Info</button>
                 <button class="btn-buy" onclick="openBuyTickets('mirror')">Buy Tickets</button>
             </div>
@@ -71,17 +80,23 @@
             <img src="https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg">
             <div class="show-info">
                 <h3>Oleanna</h3>
-                <p>Aug 27, 2021 - Oct 23, 2021 [cite: 51]</p>
+                <p>Aug 27, 2021 - Oct 23, 2021</p>
                 <button class="btn-more" onclick="openMoreInfo('oleanna')">More Info</button>
                 <button class="btn-buy" onclick="openBuyTickets('oleanna')">Buy Tickets</button>
             </div>
         </div>
     </main>
 
+    <!-- Ce qui se passe quand on clique sur More Info -->
+    <!-- Fond un peu noir/transparent qui se met sur en arrière plan sur la page principale -->
     <div id="modal-info" class="modal-overlay">
+        <!-- Carte pop up -->
         <div class="modal-content">
+            <!-- Croix en haut à droite pour fermer la carte -->
             <span class="close-btn" onclick="closeModal('modal-info')">&times;</span>
+            <!-- À gauche de la carte, on met la photo de la pièce de théatre de la carte sur laquelle on a cliqué -->
             <div class="info-card-left"><img id="info-img" src=""></div>
+            <!-- À droite de la carte on mets toutes les infos qu'il y avait dans le pdf shows.pdf : titre, catégorie, lieu, date, prix et j'ai rajouté le bouton buy tickets sur cette carte -->
             <div class="info-card-right">
                 <h4 id="info-title"></h4>
                 <div class="detail-item"><span id="info-cat"></span></div>
@@ -94,21 +109,29 @@
         </div>
     </div>
 
+    <!-- Ce qui se passe quand on clique sur Buy tickets -->
+    <!-- Fond un peu noir/transparent qui se met sur en arrière plan sur la page principale -->
     <div id="modal-buy" class="modal-overlay">
+        <!-- Carte pop up -->
         <div class="modal-content">
+            <!-- Croix en haut à droite pour fermer la carte -->
             <span class="close-btn" onclick="closeModal('modal-buy')">&times;</span>
+            <!-- À gauche de la carte, on met la photo de la pièce de théatre de la carte sur laquelle on a cliqué et un faux bouton "Confirmer" -->
             <div class="info-card-left">
                 <img id="buy-img" src="">
                 <button class="btn-buy" style="width:100%; margin-top:10px">Confirmer</button>
             </div>
             <div class="cal-box">
+                <!-- À droite de la carte, un faux calendrier sur lequel on peut cliquer les dates et ca change de couleur-->
                 <strong>Sélectionnez une date</strong>
                 <div class="days-grid" id="calendar-days"></div>
             </div>
         </div>
     </div>
 
+     <!-- "Base de données" pour les éléments que j'utilise plusieurs fois dans mon code pour pas à avoir à les réécrire et els retrouver facilement -->
     <script>
+        <!-- Base de données pour les shows avec toutes les informations -->
         const shows = {
             'play-wrong': { title: "The Play That Goes Wrong", cat: "Category: Comedies", desc: "Putting Mischief Theatre firmly on the map, The Play That Goes Wrong continues to leave audiences in fits of giggles at the Duchess Theatre.", venue: "Duchess Theatre", dates: "From Fri Nov 26 2021 to Sun Jan 30 2022", price: "$59.00 (144 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" },
             'wicked': { title: "Wicked", cat: "Category: Musicals", desc: "Since opening on Broadway in 2003, Wicked has taken the world of musical theatre by storm.", venue: "Apollo Victoria Theatre", dates: "From Mon Mar 14 2022 to Tue May 31 2022", price: "$29.00 (249 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg" },
@@ -118,6 +141,7 @@
             'oleanna': { title: "Oleanna", cat: "Category: Plays", desc: "David Mamet's Oleanna is in London in 2021. Oleanna is at the Arts Theatre from July 2021. Oleanna tickets are available on London Theatre now.", venue: "Arts Theatre", dates: "From Fri Aug 27 2021 to Sat Oct 23 2021", price: "$49.00 (329 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg" }
         };
 
+        <!-- Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info -->
         function openMoreInfo(id) {
             const s = shows[id];
             document.getElementById('info-title').innerText = s.title;
@@ -131,17 +155,23 @@
             document.getElementById('btn-buy-from-info').onclick = () => openBuyTickets(id);
         }
 
+        <!-- Fonction tirée de la fonction précédente pour que les bonnes infos apparaissent quand on clique sur Buy tickets -->
         function openBuyTickets(id) {
             document.getElementById('buy-img').src = shows[id].img;
+            <!-- Appelle mon autre fonction calendrier -->
             renderCalendar();
             document.getElementById('modal-buy').style.display = 'flex';
         }
 
+        <!-- Fonction qui permet de fermer les fenêtres pop up -->
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+        <!-- Fonction faite avec l'IA pour afficher un calendrier interactif -->
         function renderCalendar() {
             const grid = document.getElementById('calendar-days');
+            <!-- Jours de la semaine -->
             grid.innerHTML = "<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>";
+            <!-- boucle for pour créer les jours du mois -->
             for (let i = 1; i <= 31; i++) {
                 let d = document.createElement('span'); d.className = 'day'; d.innerText = i;
                 d.onclick = function() { document.querySelectorAll('.day').forEach(el => el.classList.remove('active')); this.classList.add('active'); };
