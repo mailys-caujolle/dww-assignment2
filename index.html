@@ -131,7 +131,7 @@
 
      <!-- "Base de données" pour les éléments que j'utilise plusieurs fois dans mon code pour pas à avoir à les réécrire et els retrouver facilement -->
     <script>
-        <!-- Base de données pour les shows avec toutes les informations -->
+        //Base de données pour les shows avec toutes les informations
         const shows = {
             'play-wrong': { title: "The Play That Goes Wrong", cat: "Category: Comedies", desc: "Putting Mischief Theatre firmly on the map, The Play That Goes Wrong continues to leave audiences in fits of giggles at the Duchess Theatre.", venue: "Duchess Theatre", dates: "From Fri Nov 26 2021 to Sun Jan 30 2022", price: "$59.00 (144 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" },
             'wicked': { title: "Wicked", cat: "Category: Musicals", desc: "Since opening on Broadway in 2003, Wicked has taken the world of musical theatre by storm.", venue: "Apollo Victoria Theatre", dates: "From Mon Mar 14 2022 to Tue May 31 2022", price: "$29.00 (249 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg" },
@@ -141,7 +141,7 @@
             'oleanna': { title: "Oleanna", cat: "Category: Plays", desc: "David Mamet's Oleanna is in London in 2021. Oleanna is at the Arts Theatre from July 2021. Oleanna tickets are available on London Theatre now.", venue: "Arts Theatre", dates: "From Fri Aug 27 2021 to Sat Oct 23 2021", price: "$49.00 (329 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg" }
         };
 
-        <!-- Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info -->
+        //Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info
         function openMoreInfo(id) {
             const s = shows[id];
             document.getElementById('info-title').innerText = s.title;
@@ -155,23 +155,23 @@
             document.getElementById('btn-buy-from-info').onclick = () => openBuyTickets(id);
         }
 
-        <!-- Fonction tirée de la fonction précédente pour que les bonnes infos apparaissent quand on clique sur Buy tickets -->
+        //Fonction tirée de la fonction précédente pour que les bonnes infos apparaissent quand on clique sur Buy tickets
         function openBuyTickets(id) {
             document.getElementById('buy-img').src = shows[id].img;
-            <!-- Appelle mon autre fonction calendrier -->
+            //Appelle mon autre fonction calendrier
             renderCalendar();
             document.getElementById('modal-buy').style.display = 'flex';
         }
 
-        <!-- Fonction qui permet de fermer les fenêtres pop up -->
+        //Fonction qui permet de fermer les fenêtres pop up
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        <!-- Fonction faite avec l'IA pour afficher un calendrier interactif -->
+        //Fonction faite avec l'IA pour afficher un calendrier interactif
         function renderCalendar() {
             const grid = document.getElementById('calendar-days');
-            <!-- Jours de la semaine -->
+            //Jours de la semaine
             grid.innerHTML = "<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>";
-            <!-- boucle for pour créer les jours du mois -->
+            //boucle for pour créer les jours du mois
             for (let i = 1; i <= 31; i++) {
                 let d = document.createElement('span'); d.className = 'day'; d.innerText = i;
                 d.onclick = function() { document.querySelectorAll('.day').forEach(el => el.classList.remove('active')); this.classList.add('active'); };
