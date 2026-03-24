@@ -8,8 +8,13 @@ J'ai repris les mêmes codes couleurs que ceux sur mon Figma je les ai nommées 
     --text-gray: #a0a0a0;
 }
 
-/* Fond avec un dégradé radial 
-Ca j'ai demandé à une IA, avec Figma c'était simple de le faire mais il me fallait un code pour le reproduire en CSS*/
+/* Caractéristiques de ma page principale
+- Font gradient : sur Figma c'était simple de le faire, là j'ai du trouver une fonction avec mes recherches qui reproduisait ca 
+- Fond immobile, pas de marge/contour
+- Couleur par défaut du texte blanc avec la police Roboto
+- Site qui affiche automatiquement les éléments les uns en dessous des autres, tout aligné au centre
+- Forcer l'affichage de la taille de l'écran pour tout voir comme il faut */
+
 body {
     background: radial-gradient(circle, var(--bg-center) 0%, var(--bg-edge) 100%);
     background-attachment: fixed;
@@ -22,7 +27,10 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
+/* Caractéristiques de mon header, j'ai mis toutes les caractéristiques et après je les ai réglées à la main pour voir 
+ce qui me convenait le mieux 
+J'ai demandé à l'IA quand je trouvais pas d'info sur internet sur ce que voulais faire (exemple mettre Boston Theater 
+tout à gauche et Recherche tout à droite) */
 header {
     width: 100%;
     padding: 20px 50px;
@@ -33,7 +41,8 @@ header {
 .logo { font-family: 'Playfair Display', serif; font-size: 24px; }
 .nav-secondary { display: flex; justify-content: flex-end; gap: 20px; font-size: 13px; opacity: 0.8; margin-top: 10px; }
 
-/* Grille Shows 2x3 */
+/* Grille shows pour qu'il y ait 2 colonnes et 3 lignes de la taille que je souhaitais
+ensuite style pour chaque bloc (police, couleur...) */
 .shows-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,12 +55,15 @@ header {
 .show-info h3 { font-family: 'Playfair Display', serif; margin: 0 0 5px 0; font-size: 18px; }
 .show-info p { font-size: 12px; color: var(--text-gray); margin-bottom: 15px; }
 
-/* Boutons */
+/* Boutons More Info et Buy Tickets cliquables avec leurs propriétés */
 button { border: none; padding: 10px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
 .btn-buy { background: var(--accent-red); color: white; }
 .btn-more { background: #e0e0e0; color: #333; margin-right: 5px; }
 
-/* Fenêtres Modales */
+/* Fenêtres pop up :
+- fond noir transparent pour bien faire ressortir la fenetre pop up;
+- la position sur la page, la taille, le fond ...;
+- le bouton de fermeture de la page*/
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -72,7 +84,7 @@ button { border: none; padding: 10px 15px; font-size: 10px; font-weight: bold; c
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; }
 
-/* More Info Style */
+/* style fenetre More Info */
 .info-card-left img { width: 150px; }
 .info-card-right { font-size: 12px; line-height: 1.6; }
 .info-card-right h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 0 0 10px 0; }
