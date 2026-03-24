@@ -142,6 +142,15 @@
         };
 
         //Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info
+        /* Prompt utilisé : "Avec le code déjà existant, je veux une fonction qui fasse apparaitre une carte pop up qui se ferme avec une 
+        croix en haut à droite, et qui affiche à droite les infos qu'il y a dans ma base de données organisées dans l'ordre; à gauche
+        l'image de la photo liée au bouton sur lequel on a cliqué et qu'il y ait un bouton buy tickets qui fasse apparaitre la carte pop up
+        buy tickets au dessus de cette carte sans la fermer"
+
+        Cela m'a donné cette fonction et m'a rajouté une ligne dans l'affichage des cartes plus haut pour inclure la fonction
+
+        J'ai fait de même pour la fonction openBuyTickets*/
+        
         function openMoreInfo(id) {
             const s = shows[id];
             document.getElementById('info-title').innerText = s.title;
@@ -156,6 +165,13 @@
         }
 
         //Fonction tirée de la fonction précédente pour que les bonnes infos apparaissent quand on clique sur Buy tickets
+        /*Prompt utilisé : "Avec le code déjà existant, je veux une fonction qui fasse apparaitre une carte pop up qui se ferme avec une 
+        croix en haut à droite, et qui affiche à droite un calendrier sur lequel on peut cliquer les dates; à gauche
+        l'image de la photo liée au bouton sur lequel on a cliqué"
+
+        Cela m'a crée une fonction supplémentaire renderCalendar, qui a été insérée dans la fonction openBuyTickets
+        */
+        
         function openBuyTickets(id) {
             document.getElementById('buy-img').src = shows[id].img;
             //Appelle mon autre fonction calendrier
