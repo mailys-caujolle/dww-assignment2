@@ -1,5 +1,7 @@
 # dww-assignment2
 
+Link to my Figma : https://www.figma.com/design/8Gsqvyu3PqW7wFfsNnrpKT/Ma%C3%AFlys-Caujolle---UI-Assignment?node-id=3-3&t=evVqevKjiPwQobDU-1
+
 I created a website with 2 files :
 - HTML : for text and images, functions.
 - CSS : for style, background color and organization within the page.
