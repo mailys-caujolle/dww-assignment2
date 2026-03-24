@@ -1,5 +1,5 @@
 /* Couleurs et variables 
-J'ai repris les mêmes codes couleurs que ceux sur mon Figma */
+J'ai repris les mêmes codes couleurs que ceux sur mon Figma je les ai nommées facilement pour pouvoir les réutiliser dans le HTML */
 :root {
     --bg-center: #0a0a32; 
     --bg-edge: #05051e;   
@@ -8,7 +8,8 @@ J'ai repris les mêmes codes couleurs que ceux sur mon Figma */
     --text-gray: #a0a0a0;
 }
 
-/* Fond avec dégradé radial */
+/* Fond avec un dégradé radial 
+Ca j'ai demandé à une IA, avec Figma c'était simple de le faire mais il me fallait un code pour le reproduire en CSS*/
 body {
     background: radial-gradient(circle, var(--bg-center) 0%, var(--bg-edge) 100%);
     background-attachment: fixed;
