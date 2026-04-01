@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    //Link fichier JS
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -23,68 +26,8 @@
         </div>
     </header>
 
-    <!-- Affichage des cartes des pièces de théâtre dans la zone délimitée shows-grid -->
-    <main class="shows-grid">
-        <div class="show-card">
-            <!-- Source de l'image -->
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg">
-            <div class="show-info">
-                <!-- Titre de l'image -->
-                <h3>The Play That Goes Wrong</h3>
-                <!-- paragraphe en dessous du titre -->
-                <p>Nov 26, 2021 - Jan 30, 2022</p>
-                <!-- Action quand on clique sur le bouton More Info -->
-                <button class="btn-more" onclick="openMoreInfo('play-wrong')">More Info</button>
-                <!-- Action quand on clique sur le bouton Buy Tickets -->
-                <button class="btn-buy" onclick="openBuyTickets('play-wrong')">Buy Tickets</button>
-            </div>
-        </div>
-         <!-- Pareil pour toutes les autres cartes -->
-        <div class="show-card">
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg">
-            <div class="show-info">
-                <h3>Wicked</h3>
-                <p>Mar 14, 2022 - May 31, 2022</p>
-                <button class="btn-more" onclick="openMoreInfo('wicked')">More Info</button>
-                <button class="btn-buy" onclick="openBuyTickets('wicked')">Buy Tickets</button>
-            </div>
-        </div>
-        <div class="show-card">
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg">
-            <div class="show-info">
-                <h3>Dear Evan Hansen</h3>
-                <p>May 19, 2022 - Jul 23, 2022</p>
-                <button class="btn-more" onclick="openMoreInfo('evan')">More Info</button>
-                <button class="btn-buy" onclick="openBuyTickets('evan')">Buy Tickets</button>
-            </div>
-        </div>
-        <div class="show-card">
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg">
-            <div class="show-info">
-                <h3>Pride and Prejudice* (sort of)</h3>
-                <p>Nov 28, 2021 - Feb 14, 2022</p>
-                <button class="btn-more" onclick="openMoreInfo('pride')">More Info</button>
-                <button class="btn-buy" onclick="openBuyTickets('pride')">Buy Tickets</button>
-            </div>
-        </div>
-        <div class="show-card">
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg">
-            <div class="show-info">
-                <h3>The Mirror and the Light</h3>
-                <p>Dec 19, 2021 - Jan 23, 2022</p>
-                <button class="btn-more" onclick="openMoreInfo('mirror')">More Info</button>
-                <button class="btn-buy" onclick="openBuyTickets('mirror')">Buy Tickets</button>
-            </div>
-        </div>
-        <div class="show-card">
-            <img src="https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg">
-            <div class="show-info">
-                <h3>Oleanna</h3>
-                <p>Aug 27, 2021 - Oct 23, 2021</p>
-                <button class="btn-more" onclick="openMoreInfo('oleanna')">More Info</button>
-                <button class="btn-buy" onclick="openBuyTickets('oleanna')">Buy Tickets</button>
-            </div>
-        </div>
+    <!-- J'ai enlevé toutes les infos du main car elles seront toutes dans le JS-->
+    <main class="shows-grid" id="main-grid">
     </main>
 
     <!-- Ce qui se passe quand on clique sur More Info -->
@@ -131,16 +74,9 @@
 
      <!-- "Base de données" pour les éléments que j'utilise plusieurs fois dans mon code pour pas à avoir à les réécrire et els retrouver facilement -->
     <script>
-        //Base de données pour les shows avec toutes les informations
-        const shows = {
-            'play-wrong': { title: "The Play That Goes Wrong", cat: "Category: Comedies", desc: "Putting Mischief Theatre firmly on the map, The Play That Goes Wrong continues to leave audiences in fits of giggles at the Duchess Theatre.", venue: "Duchess Theatre", dates: "From Fri Nov 26 2021 to Sun Jan 30 2022", price: "$59.00 (144 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/the-play-that-goes-wrong.jpg" },
-            'wicked': { title: "Wicked", cat: "Category: Musicals", desc: "Since opening on Broadway in 2003, Wicked has taken the world of musical theatre by storm.", venue: "Apollo Victoria Theatre", dates: "From Mon Mar 14 2022 to Tue May 31 2022", price: "$29.00 (249 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/wicked.jpg" },
-            'evan': { title: "Dear Evan Hansen", cat: "Category: Musicals", desc: "The smash-hit Broadway musical Dear Evan Hansen, from the writers of La La Land and The Greatest Showman, transferred to London's Noel Coward Theatre in November 2019.", venue: "Noel Coward Theatre", dates: "From Thu May 19 2022 to Sat Jul 23 2022", price: "$49.00 (62 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/dear-evan-hansen.jpg" },
-            'pride': { title: "Pride and Prejudice* (sort of)", cat: "Category: Comedies", desc: "It's a truth universally acknowledged that a Jane Austen novel must be adapted - and this time, 30 years of pop hits and an irreverent all-female cast bring a bold new Pride and Prejudice to the Criterion Theatre!", venue: "Criterion Theatre", dates: "From Sun Nov 28 2021 to Mon Feb 14 2022", price: "$59.00 (291 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/pride-and-prejudice-sort-of.jpg" },
-            'mirror': { title: "The Mirror and the Light", cat: "Category: Plays", desc: "Hilary Mantel's The Mirror and the Light at the Gielgud Theatre. Show of the Week - Special prices available.", venue: "Gielgud Theatre", dates: "From Sun Dec 19 2021 to Sun Jan 23 2022", price: "$59.00 (198 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/the-mirror-and-the-light.jpg" },
-            'oleanna': { title: "Oleanna", cat: "Category: Plays", desc: "David Mamet's Oleanna is in London in 2021. Oleanna is at the Arts Theatre from July 2021. Oleanna tickets are available on London Theatre now.", venue: "Arts Theatre", dates: "From Fri Aug 27 2021 to Sat Oct 23 2021", price: "$49.00 (329 tickets remaining)", img: "https://makerslab.em-lyon.com/dww/data/shows/oleanna.jpg" }
-        };
 
+        // J'ai enlevé la base de données car elle est désormais dans shows.json
+        
         //Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info
         /* Prompt utilisé : "Avec le code déjà existant, je veux une fonction qui fasse apparaitre une carte pop up qui se ferme avec une 
         croix en haut à droite, et qui affiche à droite les infos qu'il y a dans ma base de données organisées dans l'ordre; à gauche
