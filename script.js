@@ -16,46 +16,49 @@ const getData = async(doStuffs) => {
 //J'ai repris toutes mes fonctions précédentes du HTML et je les ai mises dans le JS
 getData((data) => {
     const grid = document.getElementById('main-grid');
-    
-    // création d'un objet global pour stocker les infos et les réutiliser dans les pop-ups
     window.allShowsData = {}; 
+    grid.innerHTML = ""; // On nettoie la grille
 
-    // On fusionne les catégories du JSON (musicals, comedies, plays)
-    const categories = Object.keys(data); // Récupère ["musicals", "comedies", "plays"]
+    // On définit les clés qui contiennent des spectacles
+    const categoriesAffichees = ["musicals", "comedies", "plays"];
 
-    categories.forEach(cat => {
-        data[cat].forEach((show, index) => {
-            // On crée un identifiant unique
-            const showId = `${cat}-${index}`;
+    categoriesAffichees.forEach(cat => {
+        // On vérifie si la catégorie existe bien 
+        if (data[cat] && Array.isArray(data[cat])) {
             
-            // On sauvegarde les infos dans notre "base de données" temporaire
-            window.allShowsData[showId] = {
-                title: show.title,
-                cat: "Category: " + cat.charAt(0).toUpperCase() + cat.slice(1),
-                desc: show.description,
-                venue: show.location,
-                dates: `From ${show.dates.from} to ${show.dates.to}`,
-                price: `$${show.price} (${show.tickets_remaining} tickets remaining)`,
-                img: show.image
-            };
+            data[cat].forEach((show, index) => {
+                // Création d'un ID unique pour les pop-ups
+                const showId = `${cat}-${index}`;
+                
+                // On stocke les infos pour tes fonctions More Info / Buy Tickets
+                window.allShowsData[showId] = {
+                    title: show.title,
+                    cat: "Category: " + cat,
+                    desc: show.description,
+                    venue: show.location,
+                    dates: `From ${show.dates.from} to ${show.dates.to}`,
+                    price: `$${show.price} (${show.tickets_remaining} tickets remaining)`,
+                    img: show.image
+                };
 
-            // On génère le HTML de la carte, lié avec le fichier CSS
-            const cardHTML = `
-                <div class="show-card">
-                    <img src="${show.image}" alt="${show.title}">
-                    <div class="show-info">
-                        <h3>${show.title}</h3>
-                        <p>${show.dates.from} - ${show.dates.to}</p>
-                        <button class="btn-more" onclick="openMoreInfo('${showId}')">More Info</button>
-                        <button class="btn-buy" onclick="openBuyTickets('${showId}')">Buy Tickets</button>
+                // On génère le HTML de la carte
+                const cardHTML = `
+                    <div class="show-card">
+                        <img src="${show.image}" alt="${show.title}">
+                        <div class="show-info">
+                            <h3>${show.title}</h3>
+                            <p>${show.dates.from} - ${show.dates.to}</p>
+                            <button class="btn-more" onclick="openMoreInfo('${showId}')">More Info</button>
+                            <button class="btn-buy" onclick="openBuyTickets('${showId}')">Buy Tickets</button>
+                        </div>
                     </div>
-                </div>
-            `;
-            grid.innerHTML += cardHTML;
-        });
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
     });
 });
-
+               
 // 3. mes fonctions 
 function openMoreInfo(id) {
     const s = window.allShowsData[id];
