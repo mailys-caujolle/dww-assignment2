@@ -17,7 +17,7 @@ const getData = async(doStuffs) => {
 getData((data) => {
     const grid = document.getElementById('main-grid');
     window.allShowsData = {}; 
-    grid.innerHTML = ""; // On nettoie la grille
+    grid.innerHTML = ""; 
 
     // On définit les clés qui contiennent des spectacles
     const categoriesAffichees = ["musicals", "comedies", "plays"];
