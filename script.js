@@ -1,4 +1,3 @@
-// change the variable value with the url of your dataset
 const myUrl = "shows.json"; //https://makerslab.em-lyon.com/dww/data/shows.json
 
 const getData = async(doStuffs) => {
