@@ -72,64 +72,7 @@
         </div>
     </div>
 
-     <!-- "Base de données" pour les éléments que j'utilise plusieurs fois dans mon code pour pas à avoir à les réécrire et els retrouver facilement -->
-    <script>
+           // J'ai enlevé la partie script car elle est désormais dans le JS
 
-        // J'ai enlevé la base de données car elle est désormais dans shows.json
-        
-        //Fonction faite avec l'IA pour que les bonnes infos apparaissent quand on clique sur More Info
-        /* Prompt utilisé : "Avec le code déjà existant, je veux une fonction qui fasse apparaitre une carte pop up qui se ferme avec une 
-        croix en haut à droite, et qui affiche à droite les infos qu'il y a dans ma base de données organisées dans l'ordre; à gauche
-        l'image de la photo liée au bouton sur lequel on a cliqué et qu'il y ait un bouton buy tickets qui fasse apparaitre la carte pop up
-        buy tickets au dessus de cette carte sans la fermer"
-
-        Cela m'a donné cette fonction et m'a rajouté une ligne dans l'affichage des cartes plus haut pour inclure la fonction
-
-        J'ai fait de même pour la fonction openBuyTickets*/
-        
-        function openMoreInfo(id) {
-            const s = shows[id];
-            document.getElementById('info-title').innerText = s.title;
-            document.getElementById('info-cat').innerText = s.cat;
-            document.getElementById('info-desc').innerText = s.desc;
-            document.getElementById('info-venue').innerText = s.venue;
-            document.getElementById('info-dates').innerText = s.dates;
-            document.getElementById('info-price').innerText = s.price;
-            document.getElementById('info-img').src = s.img;
-            document.getElementById('modal-info').style.display = 'flex';
-            document.getElementById('btn-buy-from-info').onclick = () => openBuyTickets(id);
-        }
-
-        //Fonction tirée de la fonction précédente pour que les bonnes infos apparaissent quand on clique sur Buy tickets
-        /*Prompt utilisé : "Avec le code déjà existant, je veux une fonction qui fasse apparaitre une carte pop up qui se ferme avec une 
-        croix en haut à droite, et qui affiche à droite un calendrier sur lequel on peut cliquer les dates; à gauche
-        l'image de la photo liée au bouton sur lequel on a cliqué"
-
-        Cela m'a crée une fonction supplémentaire renderCalendar, qui a été insérée dans la fonction openBuyTickets
-        */
-        
-        function openBuyTickets(id) {
-            document.getElementById('buy-img').src = shows[id].img;
-            //Appelle mon autre fonction calendrier
-            renderCalendar();
-            document.getElementById('modal-buy').style.display = 'flex';
-        }
-
-        //Fonction qui permet de fermer les fenêtres pop up
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        //Fonction faite avec l'IA pour afficher un calendrier interactif
-        function renderCalendar() {
-            const grid = document.getElementById('calendar-days');
-            //Jours de la semaine
-            grid.innerHTML = "<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>";
-            //boucle for pour créer les jours du mois
-            for (let i = 1; i <= 31; i++) {
-                let d = document.createElement('span'); d.className = 'day'; d.innerText = i;
-                d.onclick = function() { document.querySelectorAll('.day').forEach(el => el.classList.remove('active')); this.classList.add('active'); };
-                grid.appendChild(d);
-            }
-        }
-    </script>
 </body>
 </html>
